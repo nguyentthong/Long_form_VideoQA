@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="Deformable Neural Radiance Fields creates free-viewpoint portraits (nerfies) from casually captured videos.">
+  <meta name="keywords" content="Nerfies, D-NeRF, NeRF">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Long-form VideoQA</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/favicon.png">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+
+
+
+<section class="hero" style="background-image: url('static/images/thumbnail.jpg'); background-size: cover; background-position: center;">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">Encoding and Controlling Global Semantics for Long-form Video Question Answering</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://nguyentthong.github.io/" style="color: #FF4500 !important;">Thong Thanh Nguyen</a><sup>1</sup>,</span>
+            <span class="author-block">
+              <a href="" style="color: #FF4500 !important;">Zhiyuan Hu</a><sup>1</sup>,</span>
+            <span class="author-block">
+              <a href="" style="color: #FF4500 !important;">Xiaobao Wu</a><sup>2</sup>,
+            </span>
+            <span class="author-block">
+              <a href="" style="color: #FF4500 !important;">Cong-Duy Nguyen</a><sup>2</sup>,
+            </span>
+            <span class="author-block">
+              <a href="" style="color: #FF4500 !important;">See-Kiong Ng</a><sup>1</sup>,
+            </span>
+            <span class="author-block">
+              <a href="" style="color: #FF4500 !important;">Luu Anh Tuan</a><sup>2</sup>,
+            </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>National University of Singapore (NUS),</span>
+            <span class="author-block"><sup>2</sup>Nanyang Technological University (NTU)</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href="https://arxiv.org/pdf/2405.19723"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://arxiv.org/abs/2405.19723"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://github.com/zhiyuanhubj/long_form_videoqa"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+              <!-- Dataset Link. -->
+              <span class="link-block">
+                <a href="https://github.com/zhiyuanhubj/Long_form_VideoQA/tree/main/egoqa_madqa"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="far fa-images"></i>
+                  </span>
+                  <span>Data</span>
+                  </a>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<br>
+<br>
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <div class="container">
+        <h2 class="subtitle">
+          TLDR: The first two authentically long-form Ego-QA and MAD-QA datasets (average video lengths are 18 minutes and 2 hours, respectively), with impressive performance using gated state space layer supported by representational congruence.
+        </h2>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section hero is-light">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3" style="color: black;">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Seeking answers effectively for long videos is essential to build video question answering (videoQA) systems. Previous methods adaptively select frames and regions from long videos to save computations. However, this fails to reason over the whole sequence of video, leading to sub-optimal performance. To address this problem, we introduce a state space layer (SSL) into multi-modal Transformer to efficiently integrate global semantics of the video, which mitigates the video information loss caused by frame and region selection modules. Our SSL includes a gating unit to enable controllability over the flow of global semantics into visual representations. To further enhance the controllability, we introduce a cross-modal compositional congruence (C^3) objective to encourage global semantics aligned with the question. To rigorously evaluate long-form videoQA capacity, we construct two new benchmarks Ego-QA and MAD-QA featuring videos of considerably long length, i.e. 17.5 minutes and 1.9 hours, respectively. Extensive experiments demonstrate the superiority of our framework on these new as well as existing datasets.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section hero">
+  <div class="container is-max-desktop">
+    <!-- Title Section -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column">
+        <h2 class="title is-3"><font color="black">Ego-QA and MAD-QA Datasets</font></h2>
+      </div>
+    </div>
+  </div>
+  <br>
+
+  <div class="container">
+    <!-- Image Section -->
+    <div class="columns is-centered">
+      <div class="column is-three-fifths">
+        <div class="item">
+          <!-- Replace with an image in supported format (e.g., JPG, PNG) -->
+          <img src="static/images/egoqa_madqa.png" alt="JPG">
+        </div>
+      </div>
+    </div>
+
+    <!-- Text Section -->
+    <div class="columns is-centered">
+      <div class="column is-three-fifths">
+        <p class="smaller-text">
+          <div style="padding-top: 8px;">
+            The figure illustrates two examples of our Ego-QA and MAD-QA dataset, respectively. Question in the first video requires the model to reason about the relation chain of replacing ingot of palladium to activate the rt unit that powers the armored suit and protects person’s health. Question in the second video necessitates an understanding of the overall theme.
+          </div>
+          <!-- Other Steps -->
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="solid">
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full">
+        <h2 class="title is-3"><font color="black">Gated State Space Layer and Compositional Congruence for Long-form VideoQA</font></h2>
+      </div>
+    </div>
+  </div>
+
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full">
+        <img src="static/images/overall_architecture.png" alt="JPG">
+      </div>
+    </div>
+  </div>
+
+  <div class="container is-max-desktop">
+    <div class="columns">
+      <div class="column is-full">
+      <br>
+      <font color="black">We use state space layer to encode global semantics of long videos. Our global semantics is controlled by a gating layer and a compositional congruence objective, which in total boost the performance on 7 datasets including our 2 benchmarks.</font>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="solid">
+<section class="section">
+  <!-- 标题部分 -->
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full">
+        <h2 class="title is-3"><font color="black">Experimental Results</font></h2>
+      </div>
+    </div>
+  </div>
+
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full">
+        <img src="static/images/qualitative_analysis.png" alt="JPG">
+      </div>
+    </div>
+  </div>
+
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full">
+        <ul style="text-align: left; list-style-type: disc;">
+          <li>The results demonstrate the outstanding performance of our approach over existing methods.</li>
+          <li>As shown in the example, our model can choose the correct answer for questions that require long-narration understanding. In contrast, previous state-of-the-art MIST-CLIP struggles in such questions.</li>
+          <li>Our gated SSL is more efficient than the attention operation, while as efficient as convolution but much more effective.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full" style="width: 600px;">
+        <img src="static/images/efficiency_ssl.png" alt="JPG">
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="solid">
+
+<!--BibTex citation -->
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title has-text-centered"><font color="black">BibTeX</font></h2>
+    <pre><code>
+      @article{nguyen2024encoding,
+        author    = {Nguyen, Thong Thanh and Hu, Zhiyuan and Wu, Xiaobao and Nguyen, Cong-Duy T and Ng, See-Kiong and Luu, Anh Tuan},
+        title     = {Encoding and Controlling Global Semantics for Long-form Video Question Answering},
+        journal   = {EMNLP},
+        year      = {2024},
+      }
+    </code></pre>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <a class="icon-link"
+         href="https://arxiv.org/pdf/2405.19723">
+        <i class="fas fa-file-pdf"></i>
+      </a>
+      <a class="icon-link" href="https://github.com/keunhong" class="external-link" disabled>
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website is licensed under a <a rel="license"
+                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+          <p>
+            This means you are free to borrow the <a
+              href="https://github.com/zhiyuanhubj/Long_form_VideoQA">source code</a> of this website,
+            we just ask that you link back to this page in the footer.
+            Please remember to remove the analytics code included in the header of the website which
+            you do not want on your website.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
